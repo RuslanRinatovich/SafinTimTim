@@ -331,6 +331,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="Models\YogaPilatesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -390,7 +391,6 @@
   <ItemGroup>
     <Resource Include="Resources\6771568_book_education_learning_puzzle_school_icon.png" />
     <Resource Include="Resources\6771568_book_education_learning_puzzle_school_icon.ico" />
-    <None Include="logo.jpg" />
     <Content Include="Models\YogaPilatesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>YogaPilatesModel.edmx</DependentUpon>

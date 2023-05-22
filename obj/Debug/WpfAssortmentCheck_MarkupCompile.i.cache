@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-h:\SHARE\ДИПЛОМ 2023\SafinALmaz\obj\Debug\
+C:\DIPLOMS\SafinAlmaz\obj\Debug\
 WpfAssortmentCheck
 none
 false
 DEBUG;TRACE
-h:\SHARE\ДИПЛОМ 2023\SafinALmaz\App.xaml
+C:\DIPLOMS\SafinAlmaz\App.xaml
 24-1683473256
 21678415444
-42974100210
-29944187213
+42640101451
+29-924661496
 Dictionary1.xaml;Pages\AbonementPage.xaml;Pages\AddBuyPage.xaml;Pages\AddGoodPage.xaml;Pages\BuyPage.xaml;Pages\CatalogOfGoods.xaml;Pages\CategoryPage.xaml;Pages\GoodsPage.xaml;Pages\OrderPage.xaml;Pages\SellPage.xaml;Pages\StatusPage.xaml;Pages\AddNewOrderPage.xaml;Pages\TimeTablePage.xaml;Pages\UserOrderPage.xaml;Pages\VisitPage.xaml;Windows\AbonementWindow.xaml;Windows\CategoryWindow.xaml;Windows\ClientWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;Windows\MakeOrderWindow.xaml;Windows\StatusWindow.xaml;Windows\TimeTableWindow.xaml;Windows\VisitWindow.xaml;
 
 True

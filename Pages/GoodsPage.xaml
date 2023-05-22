@@ -65,7 +65,7 @@
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
             <Button x:Name="BtnCategories" 
-                 Click="BtnCategories_Click" ToolTip="Виды услуг">
+                 Click="BtnCategories_Click" ToolTip="Программы">
                 <materialDesign:PackIcon  Kind="FormatListBulletedType" Padding="0"/>
                
             </Button>
@@ -78,10 +78,10 @@
                
                
                
-            <Button x:Name="BtnAdd" Grid.Row="1" Width="100"  
-                Content="Добавить" Click="BtnAddClick" />
-            <Button x:Name="BtnDelete" Grid.Row="1" Width="100" Margin="3"
-                Content="Удалить" Click="BtnDeleteClick"/>
+            <Button x:Name="BtnAdd" Grid.Row="1" Width="auto"  
+                Content="{materialDesign:PackIcon Kind=Add}" Click="BtnAddClick" />
+            <Button x:Name="BtnDelete" Grid.Row="1" Width="auto" Margin="3"
+                Content="{materialDesign:PackIcon Kind=Delete}" Click="BtnDeleteClick"/>
         </StackPanel>
         
     </Grid>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfAssortmentCheck.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Направления" IsVisibleChanged="Page_IsVisibleChanged" Style="{StaticResource base_page}"  >
+      Title="Программы" IsVisibleChanged="Page_IsVisibleChanged" Style="{StaticResource base_page}"  >
 
     <Grid>
         <Grid.RowDefinitions>
