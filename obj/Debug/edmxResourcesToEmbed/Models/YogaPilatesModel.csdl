@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YogaFeatPilatesBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abonement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryTrainerId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="LessonCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CategoryTrainer" Relationship="Self.FK_Abonement_CategoryTrainer" FromRole="Abonement" ToRole="CategoryTrainer" />
+    <NavigationProperty Name="Buys" Relationship="Self.FK_Buy_Abonement" FromRole="Abonement" ToRole="Buy" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Abonement" FromRole="Abonement" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Buy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AbonementId" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LessonsLeftCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Abonement" Relationship="Self.FK_Buy_Abonement" FromRole="Buy" ToRole="Abonement" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Buy_Status" FromRole="Buy" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Buy_User" FromRole="Buy" ToRole="User" />
+    <NavigationProperty Name="Visits" Relationship="Self.FK_Visit_Buy" FromRole="Buy" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategoryTrainers" Relationship="Self.FK_CategoryTrainer_Category" FromRole="Category" ToRole="CategoryTrainer" />
+  </EntityType>
+  <EntityType Name="CategoryTrainer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TrainerId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Abonements" Relationship="Self.FK_Abonement_CategoryTrainer" FromRole="CategoryTrainer" ToRole="Abonement" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_CategoryTrainer_Category" FromRole="CategoryTrainer" ToRole="Category" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK_CategoryTrainer_Trainer" FromRole="CategoryTrainer" ToRole="Trainer" />
+    <NavigationProperty Name="TimeTables" Relationship="Self.FK_TimeTable_CategoryTrainer" FromRole="CategoryTrainer" ToRole="TimeTable" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AbonementId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Abonement" Relationship="Self.FK_Order_Abonement" FromRole="Order" ToRole="Abonement" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Rent_Client1" FromRole="Order" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Buys" Relationship="Self.FK_Buy_Status" FromRole="Status" ToRole="Buy" />
+  </EntityType>
+  <EntityType Name="TimeTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryTrainerId" Type="Int32" Nullable="false" />
+    <Property Name="DayWeek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DayTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="CategoryTrainer" Relationship="Self.FK_TimeTable_CategoryTrainer" FromRole="TimeTable" ToRole="CategoryTrainer" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="WorkExperience" Type="Int32" Nullable="false" />
+    <Property Name="Info" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategoryTrainers" Relationship="Self.FK_CategoryTrainer_Trainer" FromRole="Trainer" ToRole="CategoryTrainer" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassportSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassportNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Boolean" />
+    <NavigationProperty Name="Buys" Relationship="Self.FK_Buy_User" FromRole="User" ToRole="Buy" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Rent_Client1" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Visit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BuytId" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Buy" Relationship="Self.FK_Visit_Buy" FromRole="Visit" ToRole="Buy" />
+  </EntityType>
+  <Association Name="FK_Abonement_CategoryTrainer">
+    <End Role="CategoryTrainer" Type="Self.CategoryTrainer" Multiplicity="1" />
+    <End Role="Abonement" Type="Self.Abonement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryTrainer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Abonement">
+        <PropertyRef Name="CategoryTrainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buy_Abonement">
+    <End Role="Abonement" Type="Self.Abonement" Multiplicity="1" />
+    <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buy">
+        <PropertyRef Name="AbonementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Abonement">
+    <End Role="Abonement" Type="Self.Abonement" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AbonementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buy_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buy">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buy_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Buy">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visit_Buy">
+    <End Role="Buy" Type="Self.Buy" Multiplicity="1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="BuytId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryTrainer_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="CategoryTrainer" Type="Self.CategoryTrainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryTrainer">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryTrainer_Trainer">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+    <End Role="CategoryTrainer" Type="Self.CategoryTrainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryTrainer">
+        <PropertyRef Name="TrainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_CategoryTrainer">
+    <End Role="CategoryTrainer" Type="Self.CategoryTrainer" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryTrainer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="CategoryTrainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rent_Client1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YogaFeatPilatesBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abonements" EntityType="Self.Abonement" />
+    <EntitySet Name="Buys" EntityType="Self.Buy" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="CategoryTrainers" EntityType="Self.CategoryTrainer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="TimeTables" EntityType="Self.TimeTable" />
+    <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Visits" EntityType="Self.Visit" />
+    <AssociationSet Name="FK_Abonement_CategoryTrainer" Association="Self.FK_Abonement_CategoryTrainer">
+      <End Role="CategoryTrainer" EntitySet="CategoryTrainers" />
+      <End Role="Abonement" EntitySet="Abonements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buy_Abonement" Association="Self.FK_Buy_Abonement">
+      <End Role="Abonement" EntitySet="Abonements" />
+      <End Role="Buy" EntitySet="Buys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Abonement" Association="Self.FK_Order_Abonement">
+      <End Role="Abonement" EntitySet="Abonements" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buy_Status" Association="Self.FK_Buy_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Buy" EntitySet="Buys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buy_User" Association="Self.FK_Buy_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Buy" EntitySet="Buys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visit_Buy" Association="Self.FK_Visit_Buy">
+      <End Role="Buy" EntitySet="Buys" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryTrainer_Category" Association="Self.FK_CategoryTrainer_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CategoryTrainer" EntitySet="CategoryTrainers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryTrainer_Trainer" Association="Self.FK_CategoryTrainer_Trainer">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="CategoryTrainer" EntitySet="CategoryTrainers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_CategoryTrainer" Association="Self.FK_TimeTable_CategoryTrainer">
+      <End Role="CategoryTrainer" EntitySet="CategoryTrainers" />
+      <End Role="TimeTable" EntitySet="TimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rent_Client1" Association="Self.FK_Rent_Client1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

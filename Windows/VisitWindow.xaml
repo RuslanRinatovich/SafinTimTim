@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfAssortmentCheck.Windows.VisitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:WpfAssortmentCheck.Windows"
+        mc:Ignorable="d"
+         
+         Title="Расписание" Height="160" Width="800" Style="{StaticResource base_window_1}" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*" />
+            <RowDefinition Height="89*" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="187" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Абонемент" VerticalAlignment="Center" Grid.Row="0" Margin="20 0 0 0"  Grid.Column="0" Height="30" />
+
+        <TextBox  Grid.Column="1" VerticalAlignment="Center" x:Name="TbInfo" Grid.Row="0" Height="30" Margin="0,7" IsReadOnly="True"/>
+        <!--<CheckBox x:Name="CheckBoxUnlimited"   
+                                                   HorizontalAlignment="Left" IsChecked="{Binding Unlimited}" 
+                                                     Grid.Row="1" Grid.Column="1" Margin="120 0 0 0" Content="Безлимитный" />-->
+        <TextBlock Text="Время " VerticalAlignment="Center" Grid.Row="1"  Margin="20 0 0 0"  Grid.Column="0" Height="20"  />
+        <xctk:DateTimePicker  x:Name="DatePickerDate" Value="{Binding DateTime, ConverterCulture='ru-RU'}" HorizontalAlignment="Left" 
+                              Grid.Row="1" Grid.Column="1" Width="240" TabIndex="2"
+                                   />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" Margin="127,0,103,0" Width="162">
+            <Button IsDefault="True"  MinWidth="60" Margin="5" Click="Button_Click">OK</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="5">Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>

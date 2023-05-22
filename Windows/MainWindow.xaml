@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfAssortmentCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WpfAssortmentCheck"
+        mc:Ignorable="d"
+               Title="{Binding ElementName=MainFrame, Path=Content.Title}" 
+        
+        Height="450" Width="800" Icon="/WpfAssortmentCheck;component/Resources/6771568_book_education_learning_puzzle_school_icon.ico" 
+        Closing="WindowClosing" WindowStartupLocation="CenterScreen" Style="{StaticResource base_window_1}"
+        Closed="WindowClosed" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid/>
+        <Rectangle Fill="{StaticResource PrimaryHueLightBrush}"/>
+        <Image Source="/WpfAssortmentCheck;component/Resources/6771568_book_education_learning_puzzle_school_icon.png" 
+               Margin="20,10,0,10" 
+               HorizontalAlignment="Left" Height="55" Width="63"/>
+        <TextBlock Grid.Row="0" Text="АИС «Центр детского развития ТимТим»" 
+                   HorizontalAlignment="Center" Margin="20 0 0 0 " 
+                   VerticalAlignment="Center"
+                   Foreground="White" 
+                   FontSize="20"
+                   FontWeight="Bold" />
+        <Frame x:Name="MainFrame" Grid.Row="1" 
+               NavigationUIVisibility="Hidden"
+               BorderThickness="1" ContentRendered="MainFrameContentRendered"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
+            <Button x:Name="BtnEditGoods"  Click="BtnEditGoodsClick" ToolTip="Тренеры" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="AccountMultiplePlus" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnOrder"  Click="BtnOrder_Click" ToolTip="Заявки" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="OrderBoolAscending" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnBuyes"  Click="BtnBuyes_Click" ToolTip="Абонементы" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="Cash" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnMyAccount"  Click="BtnMyAccount_Click" ToolTip="Мой профиль" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="Account" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnMyOrders"  Click="BtnMyOrders_Click" ToolTip="Оставить заявку" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="StarBorder" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnEnter"  Click="BtnEnter_Click" ToolTip="Войти">
+                <materialDesign:PackIcon x:Name="IconBtnKey"  Kind="Login" Padding="0"/>
+            </Button>
+            <Button x:Name="BtnBack" 
+                 Click="BtnBackClick" ToolTip="Назад" Visibility="Collapsed">
+                <materialDesign:PackIcon  Kind="ArrowBack" Padding="0"/>
+                <!--Key-->
+            </Button>
+        </StackPanel>
+        <Rectangle Grid.Row="2" Fill="{StaticResource PrimaryHueLightBrush}"/>
+
+    </Grid>
+</Window>
+
